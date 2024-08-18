@@ -13,3 +13,9 @@ after_success:
   - docker build -t syjn99/multi-nginx ./nginx
   - docker build -t syjn99/multi-server ./server
   - docker build -t syjn99/multi-worker ./worker
+  # Login to Docker Hub
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push syjn99/multi-client
+  - docker push syjn99/multi-nginx
+  - docker push syjn99/multi-server
+  - docker push syjn99/multi-worker
